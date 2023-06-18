@@ -1,0 +1,134 @@
+[gd_scene load_steps=5 format=3 uid="uid://bclncp8pbou08"]
+
+[ext_resource type="PackedScene" uid="uid://cbwb00e0cdspy" path="res://Scene/game_controler.tscn" id="1_up8s2"]
+[ext_resource type="Script" path="res://Scene/main.gd" id="1_yvv3x"]
+[ext_resource type="Texture2D" uid="uid://cq5nbsmvgmxvw" path="res://tiles/mine.png" id="2_e3gk7"]
+[ext_resource type="Texture2D" uid="uid://cv0ll232k50v2" path="res://tiles/flag.png" id="3_wmj7k"]
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_yvv3x")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -183.0
+offset_top = -183.0
+offset_right = 183.0
+offset_bottom = 183.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="BtnMenu" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Menu"
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_e3gk7")
+
+[node name="BombTotal" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "10"
+horizontal_alignment = 3
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "/"
+vertical_alignment = 1
+
+[node name="FlagsTotal" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "10"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+texture = ExtResource("3_wmj7k")
+
+[node name="GameState" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="GameControler" parent="MarginContainer/VBoxContainer" instance=ExtResource("1_up8s2")]
+layout_mode = 2
+
+[node name="Menu" type="Panel" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/Menu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Menu/CenterContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="GameEndMessage" type="Label" parent="MarginContainer/Menu/CenterContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "YOU WIN"
+
+[node name="BtnEasy" type="Button" parent="MarginContainer/Menu/CenterContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "New Game Easy"
+
+[node name="BtnMed" type="Button" parent="MarginContainer/Menu/CenterContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "New Game Medium"
+
+[node name="BtnHard" type="Button" parent="MarginContainer/Menu/CenterContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "New Game Hard"
+
+[node name="BtnExit" type="Button" parent="MarginContainer/Menu/CenterContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Exit"
+
+[node name="BtnResume" type="Button" parent="MarginContainer/Menu/CenterContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Resume"
+
+[node name="BtnCheet" type="Button" parent="MarginContainer/Menu/CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "Do not push"
+
+[connection signal="resized" from="MarginContainer" to="." method="_on_margin_container_resized"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/BtnMenu" to="." method="_on_btn_menu_pressed"]
+[connection signal="pressed" from="MarginContainer/Menu/CenterContainer/VBoxContainer/BtnEasy" to="." method="_on_btn_easy_pressed"]
+[connection signal="pressed" from="MarginContainer/Menu/CenterContainer/VBoxContainer/BtnMed" to="." method="_on_btn_med_pressed"]
+[connection signal="pressed" from="MarginContainer/Menu/CenterContainer/VBoxContainer/BtnHard" to="." method="_on_btn_hard_pressed"]
+[connection signal="pressed" from="MarginContainer/Menu/CenterContainer/VBoxContainer/BtnExit" to="." method="_on_btn_exit_pressed"]
+[connection signal="pressed" from="MarginContainer/Menu/CenterContainer/VBoxContainer/BtnResume" to="." method="_on_btn_resume_pressed"]
+[connection signal="pressed" from="MarginContainer/Menu/CenterContainer/VBoxContainer/BtnCheet" to="." method="_on_btn_cheet_pressed"]

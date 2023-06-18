@@ -1,0 +1,52 @@
+[gd_scene load_steps=3 format=3 uid="uid://287l031lr3m4"]
+
+[ext_resource type="Texture2D" uid="uid://dokh77qo7dirc" path="res://tiles/hidden.png" id="1_2alht"]
+[ext_resource type="Script" path="res://Scene/Tile.gd" id="3_jkkkq"]
+
+[node name="Tile" type="TextureButton" groups=["Tiles"]]
+offset_right = 32.0
+offset_bottom = 32.0
+texture_normal = ExtResource("1_2alht")
+texture_pressed = ExtResource("1_2alht")
+script = ExtResource("3_jkkkq")
+metadata/_edit_group_ = true
+
+[node name="Flag" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+button_mask = 2
+
+[node name="Cord" type="Button" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+button_mask = 3
+
+[node name="Label" type="Label" parent="."]
+visible = false
+modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]
+[connection signal="pressed" from="Flag" to="." method="_on_flag_pressed"]
+[connection signal="pressed" from="Cord" to="." method="_on_cord_pressed"]

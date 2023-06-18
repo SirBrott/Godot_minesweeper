@@ -1,0 +1,80 @@
+
+get_window().size #change window size
+
+24x24 bord is 860x860
+
+var screen_size = get_tree().get_root().size 
+var set_width = ProjectSettings.get("display/window/size/width") 
+var set_height = ProjectSettings.get("display/window/size/height") 
+var real_size = size * screen_size / Vector2(set_width, set_height)
+
+generate a bord of tiles
+clicking on the tile reveals its state ether as empty or has a bomb
+if a bomb square then game over
+if an empty square then reval a number showing how many bombs are in it's 3x3 space around it
+
+
+if the number is 0 then you should reveal it's 3x3 Neighbors, this repeats untell all 0 tiles are revealed
+
+-1,1  0,1  1,1
+-1,0  0,0  1,0
+-1,-1 0,-1 1,-1
+
+cord
+when a tile is reveald and the number of flags in Neighbors equal that number then reveal the tiles
+this is not a safe operation
+
+
+board setup screen
+have the title
+3 buttons for easy/med/hard games
+
+play bord
+have a counter of total bombs to flagged bombs and a menu button that opens the options menu
+TODO: make the game first click safe. if you click on a bomb move it to somewhare else
+
+cheet button
+have a button that activattes the labes on the tiles that show the tile stat
+
+Game states
+	
+	New game
+		Start a new game with select board settings
+	
+	Select board
+		9x9 with 10 bombs
+		16x16 with 40 bombs
+		24 x 24 with 99 bombs
+		Custom board size and number of bombs 
+			show the ratio of bombs to open spaces and recomend a number of mines to equal 5% to 8%
+		Flag the bombs challenge
+			Have the bord reviled showing all the numbers, you thenn need to plant flags
+			  for each bomb when you have planted all the flags you can click check to 
+			  show all the bombs squares and if any fo them are not flagged, boom!
+	Score type
+		Time
+		Clicks
+		none
+	Exit game
+		End program
+	Options
+		Sound vol
+		Music vol
+	
+	Game run
+		Left click cell to clear
+			If cell is clear continue
+				If all cells - num of bombs clear win game
+			If cell has bomb game loose
+		Right click cell to flag
+			If 90% of the cells are clicked and all bombs are flagged
+				Win game
+		Board of all cells showing with counters on top with a pause button
+		Pause button
+			Brings up the same window as win/loss
+			Also has return to game button
+	
+	Game win / Game loss 
+		Same window with different text
+		New board
+		Go to main menu
